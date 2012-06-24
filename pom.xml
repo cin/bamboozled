@@ -125,7 +125,7 @@
                     <deleteConflictingFiles>true</deleteConflictingFiles>
                     <undeployBeforeDeploy>true</undeployBeforeDeploy>
                     <!--<sign>-->
-                    <!--<debug>false</debug>-->
+                        <!--<debug>false</debug>-->
                     <!--</sign>-->
                     <zipalign>
                         <verbose>true</verbose>
