@@ -4,21 +4,16 @@ import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.opengl.GLSurfaceView
-import HelloAndroidActivity.TAG
+import Bamboozled.TAG
 
-object HelloAndroidActivity {
+
+object Bamboozled {
   val TAG = "com/zot/bamboozled"
 }
 
-class HelloAndroidActivity extends Activity {
+class Bamboozled extends Activity {
   var glView: GLSurfaceView = _
 
-  /**
-   * Called when the activity is first created.
-   * @param savedInstanceState If the activity is being re-initialized after
-   *                           previously being shut down then this Bundle contains the data it most
-   *                           recently supplied in onSaveInstanceState(Bundle). <b>Note: Otherwise it is null.</b>
-   */
   override protected def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
     Log.i(TAG, "onCreate")
@@ -28,11 +23,13 @@ class HelloAndroidActivity extends Activity {
 
   override protected def onPause() {
     super.onPause()
+    Log.i(TAG, "onPause")
     glView.onPause()
   }
 
   override protected def onResume() {
     super.onResume()
+    Log.i(TAG, "onResume")
     glView.onResume()
   }
 }
