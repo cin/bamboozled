@@ -30,7 +30,7 @@ class Renderer extends GLSurfaceView.Renderer {
   }
 
   def onDrawFrame(gl: GL10) {
-    Log.i(TAG, "onDrawFrame")
+    //Log.i(TAG, "onDrawFrame")
     Engine.tick(gl)
   }
 }

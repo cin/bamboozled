@@ -12,12 +12,15 @@ object Bamboozled {
 }
 
 class Bamboozled extends Activity {
-  var glView: GLSurfaceView = _
+  private var glView: View = _
+  def getGlView = glView
 
   override protected def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
     Log.i(TAG, "onCreate")
+    // order matters here. engine needs the view to be initialized first.
     glView = new View(this)
+    Engine.init(this)
     setContentView(glView)
   }
 

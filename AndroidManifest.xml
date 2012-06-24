@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="67" android:versionName="1.0-SNAPSHOT" package="com.zot.bamboozled">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="76" android:versionName="1.0-SNAPSHOT" package="com.zot.bamboozled">
 
   <uses-sdk android:minSdkVersion="7"/>
 
