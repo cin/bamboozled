@@ -3,7 +3,6 @@ package com.zot.bamboozled
 import android.app.Activity
 import android.os.Bundle
 import android.util.Log
-import android.opengl.GLSurfaceView
 import Bamboozled.TAG
 
 
@@ -18,6 +17,7 @@ class Bamboozled extends Activity {
   override protected def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
     Log.i(TAG, "onCreate")
+
     // order matters here. engine needs the view to be initialized first.
     glView = new View(this)
     Engine.init(this)

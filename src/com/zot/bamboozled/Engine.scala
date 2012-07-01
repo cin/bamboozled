@@ -1,6 +1,7 @@
 package com.zot.bamboozled
 
 import javax.microedition.khronos.opengles.GL10
+import android.opengl.GLU
 import android.content.Context
 import android.widget.Toast
 
@@ -30,9 +31,20 @@ object Engine {
 
   def toast(msg: String) { Toast.makeText(context, msg, Toast.LENGTH_SHORT).show() }
 
+  def resize(gl: GL10, w: Int, h: Int) {
+    gl.glViewport(0, 0, w, h)
+    val ratio = w.toFloat / h
+    gl.glMatrixMode(GL10.GL_PROJECTION)
+    gl.glLoadIdentity()
+    gl.glFrustumf(-ratio, ratio, -1.0f, 1.0f, 3.0f, 7.0f)
+    gl.glMatrixMode(GL10.GL_MODELVIEW)
+    gl.glLoadIdentity()
+    GLU.gluLookAt(gl, 0.0f, 0.0f, -5.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f)
+  }
+
   def tick(gl: GL10) {
-    val time: Long = System.nanoTime
-    dt = time - lastTick
+    val time = System.nanoTime
+    dt       = time - lastTick
     if (update) draw(gl)
     lastTick = time
   }
