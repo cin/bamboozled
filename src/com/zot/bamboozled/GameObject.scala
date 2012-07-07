@@ -1,6 +1,6 @@
 package com.zot.bamboozled
 
-class GameObject {
+trait GameObject {
   var renderGroup    = 1 // 1-10 10 is rendered 1st
   var collisionGroup = 1 //
 
@@ -9,5 +9,6 @@ class GameObject {
   var y = 0
   var r = 0
 
-  def update() {}
+  def init()
+  def update(): Boolean
 }

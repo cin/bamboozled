@@ -21,19 +21,12 @@ object Engine {
   var currTick = 0L
   var dt       = 0L
 
-  val tri = Array(
-    0.0f,  1.0f, 0.0f,
-    -1.0f, -1.0f, 0.0f,
-    1.0f, -1.0f, 0.0f
-  )
-
-  var fb: FloatBuffer = _
-
   def init(bbz: Bamboozled) {
     this.bbz = bbz
     context  = bbz.getApplicationContext
     view     = bbz.getGlView
     renderer = view.renderer
+    state.create()
   }
 
   def getActivity = bbz
@@ -56,9 +49,6 @@ object Engine {
       0.0f, 0.0f, 5.0f, /* camera location */
       0.0f, 0.0f, 0.0f, /* center point */
       0.0f, 1.0f, 0.0f) /* up vector */
-
-    fb = ByteBuffer.allocateDirect(tri.size * 4).order(ByteOrder.nativeOrder).asFloatBuffer()
-    fb.put(tri).position(0)
   }
 
   def tick(gl: GL10) {
@@ -71,15 +61,7 @@ object Engine {
   protected def draw(gl: GL10) {
     gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT)
     gl.glMatrixMode(GL10.GL_MODELVIEW)
-    gl.glPushMatrix()
-//      gl.glLoadIdentity()
-      gl.glColor4f(1.0f, 0.0f, 0.0f, 0.0f)
-      gl.glTranslatef(0.0f, 0.0f, 0.0f)
-      gl.glEnableClientState(GL10.GL_VERTEX_ARRAY)
-      gl.glVertexPointer(3, GL10.GL_FLOAT, 0, fb)
-      gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 0, 3)
-      gl.glDisableClientState(GL10.GL_VERTEX_ARRAY)
-    gl.glPopMatrix()
+    state.draw(gl)
   }
 
   protected def update: Boolean = state.update
